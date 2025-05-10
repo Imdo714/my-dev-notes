@@ -121,3 +121,26 @@ Set<저장할 객체 타입> set = new HashSet<저장할 객체 타입>();
 ### 중복을 걸러내는 과정
 - `HashSet`은 객체를 저장하기 전에 먼저 객체의 `hashCode()` 메서드를 호출해서 해시코드를 얻어낸다. -> 그리고 이미 저장되어 있는 객체들의 해시코드와 비교한다.
 - 동일한 해시코드가 있다면 다시 equals() 메서드로 두 객체를 비교해서 true가 나오면 동일한 객체로 판단하고 중복 저장을 하지 않는다.
+
+## HashSet 활용 문제
+> 알고리즘 문제 : https://www.acmicpc.net/problem/3052
+
+- 문제를 보면 입력 값이 42로 나눈 서로 다른 값이 몇개인지 출력하는 프로그램이다.
+- 입력 값을 받아 42로 나눈 값을 HashSet에 저장 그러면 증복 값은 추가 되지 않음
+- 출력할 때 `set.size()`로 몇개인지 반환 
+```java
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < 10; i++) {
+            int num = sc.nextInt();
+            set.add(num % 42); // 
+        }
+
+        System.out.println(set.size());
+    }
+}
+```
